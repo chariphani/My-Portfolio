@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+  @apply bg-ink font-roboto text-mist leading-relaxed antialiased;
+  background-image: radial-gradient(circle at 10% 0%, #0D1E4C 0, transparent 45%),
+                    radial-gradient(circle at 90% 55%, #26415E88 0, transparent 40%),
+                    radial-gradient(circle at 20% 95%, #C48CB322 0, transparent 40%);
+  background-attachment: fixed;
+}
+::selection { background: #C48CB3; color: #0B1B32; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0B1B32; }
+::-webkit-scrollbar-thumb { background: #26415E; border-radius: 10px; }
+
+@layer components {
+  .section { @apply mx-auto max-w-5xl px-6 py-20 md:px-8; }
+  .section-title { @apply mb-12 text-center text-3xl font-black md:text-4xl; }
+  .gradient-text {
+    @apply bg-clip-text text-transparent animate-shimmer;
+    background-image: linear-gradient(90deg, #83A6CE, #C48CB3, #E5C9D7, #C48CB3, #83A6CE);
+    background-size: 200% auto;
+  }
+  .btn {
+    @apply inline-block rounded-full px-7 py-3 font-bold text-ink transition-all duration-300 hover:-translate-y-1 active:translate-y-0;
+    box-shadow: 0 6px 0 #26415E, 0 14px 25px rgba(0, 0, 0, .4);
+  }
+  .btn:hover { box-shadow: 0 9px 0 #26415E, 0 20px 30px rgba(131, 166, 206, .25); }
+  .btn:active { box-shadow: 0 2px 0 #26415E; }
+  .card3d {
+    @apply rounded-3xl border border-sky/20 bg-navy/70 p-6 backdrop-blur-md;
+    box-shadow: 0 25px 45px -15px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(229, 201, 215, .08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
